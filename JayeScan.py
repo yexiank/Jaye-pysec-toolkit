@@ -85,7 +85,7 @@ def _init_port_info():
     """初始化端口信息字典，为所有1000个端口添加服务名称和描述"""
     port_info = {}
     
-    # 高危端口详细描述（从原critical_ports迁移）
+    # 高危端口详细描述
     critical_descriptions = {
         21: "FTP 文件传输协议，常存在弱口令/匿名访问漏洞",
         22: "SSH 安全远程登录，弱口令爆破首要目标",
@@ -456,7 +456,7 @@ def input_result(open_ports):
                 is_critical = port_data["critical"]
                 
                 if is_critical:
-                    # 高危端口：红色警告，类似nmap风格
+                    # 高危端口：红色警告
                     print(f"{COLOR_RED}{BOLD}{port:<8}{RESET} {COLOR_RED}{'open':<8}{RESET} {COLOR_YELLOW}{service_name:<20}{RESET} {COLOR_RED}{description}{RESET}")
                 else:
                     # 普通端口：绿色正常状态
@@ -523,4 +523,5 @@ def main():
                 print(f"{COLOR_RED}[!]{RESET} {COLOR_RED}格式错误：请输入有效的端口号{RESET}")
 
 if __name__ == "__main__":
+
     main()
